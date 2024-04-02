@@ -54,25 +54,24 @@ export const CourseProgressButton = ({
 
   const Icon = isCompleted ? XCircle : CheckCircle
   const generateCertificate = () => {
-    // Redirect to the certificate generation page when the course is completed
-    router.push(`/courses/${courseId}/generate-certificate`);
-    // app\(course)\courses\[courseId]\generate-certificate.tsx
-    // app\(course)\courses\[courseId]\_components\generate-certificate.tsx
-    // app\api\courses\[courseId]\generate-certificate.tsx
+    // TODO: Redirect to the certificate generation page when the course is completed
+    console.log("clicked generate")
+    
   };
-
   return (
-    <><Button
-      onClick={onClick}
-      disabled={isLoading}
-      type="button"
-      variant={isCompleted ? "outline" : "success"}
-      className="w-full md:w-auto"
-    >
-      {isCompleted ? "Not completed" : "Mark as complete"}
-      <Icon className="h-4 w-4 ml-2" />
-    </Button>{/* Show the certificate generation button when the course is completed */}
-    {isCompleted && (
+    <>
+      <Button
+        onClick={onClick}
+        disabled={isLoading}
+        type="button"
+        variant={isCompleted ? "outline" : "success"}
+        className="w-full md:w-auto"
+      >
+        {isCompleted ? "Not completed" : "Mark as complete"}
+        <Icon className="h-4 w-4 ml-2" />
+      </Button>
+      {/* Show the certificate generation button when the course is completed */}
+      {isCompleted && (
         <Button
           onClick={generateCertificate}
           type="button"
@@ -83,5 +82,6 @@ export const CourseProgressButton = ({
       )}
     </>
   );
-
 }
+
+
