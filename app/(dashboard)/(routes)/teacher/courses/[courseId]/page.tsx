@@ -64,12 +64,19 @@ const CourseIdPage = async ({
     course.chapters.some(chapter => chapter.isPublished),
   ];
 
+  if (course.price !== null && course.price !== undefined) {
+    requiredFields.push(course.price);
+  }
+
   const totalFields = requiredFields.length;
+  const filteredFields = requiredFields.filter(field => field !== course.price);
+
   const completedFields = requiredFields.filter(Boolean).length;
 
   const completionText = `(${completedFields}/${totalFields})`;
 
-  const isComplete = requiredFields.every(Boolean);
+  // const isComplete = requiredFields.every(Boolean);
+  const isComplete = filteredFields.every(Boolean);
 
   return (
     <>
